@@ -11,11 +11,13 @@
 	<groupId>com.spring.crud</groupId>
 	<artifactId>spring-mysql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>SpringMysql</name>
 	<description>Mysql CRUD project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<start-class>com.spring.crud.SpringMysqlApplication</start-class>
 	</properties>
 
 	<dependencies>
@@ -58,9 +60,21 @@
 		   <artifactId>spring-boot-starter-tomcat</artifactId>
 		   <scope>provided</scope>
 		</dependency>
+		
+		<dependency>
+       		<groupId>javax.servlet</groupId>
+       		<artifactId>javax.servlet-api</artifactId>
+   		</dependency>
+   		
+   		<dependency>
+		    <groupId>javax.el</groupId>
+		    <artifactId>javax.el-api</artifactId>
+		    <version>3.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

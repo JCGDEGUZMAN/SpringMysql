@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	This is a profile page...
+	My Full Name is ${profile.pfname} ${profile.pmname} ${profile.plname}
 </body>
 </html>

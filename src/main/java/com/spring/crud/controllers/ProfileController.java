@@ -1,19 +1,24 @@
 package com.spring.crud.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-import com.spring.crud.models.Profile;
+import java.util.List;
 
-@Controller
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.spring.crud.models.Profile;
+import com.spring.crud.service.IProfileService;
+
+@RestController
 public class ProfileController {
 
+	@Autowired
+	IProfileService profileService;
+	
 	@RequestMapping("profile")
-	public ModelAndView Profile(Profile profile)
+	public List<Profile> findProfiles()
 	{
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("profile", profile);
-		mv.setViewName("Profile");
-		return mv;
+		List<Profile> profiles = profileService.findAll();
+		return profiles;
 	}
+	
 }

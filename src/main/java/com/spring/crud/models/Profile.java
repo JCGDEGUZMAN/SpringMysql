@@ -1,23 +1,28 @@
 package com.spring.crud.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="profile")
 public class Profile {
 	@Id
-	private int pid;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 
 	private String pfname;
 	private String pmname;
 	private String plname;
 	
-	public int getPid() {
-		return pid;
+	public long getId() {	
+		return id;
 	}
 
-	public void setPid(int pid) {
-		this.pid = pid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getPfname() {

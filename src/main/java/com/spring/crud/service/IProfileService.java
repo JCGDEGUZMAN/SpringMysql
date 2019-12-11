@@ -8,4 +8,5 @@ import com.spring.crud.models.Profile;
 public interface IProfileService {
 
 	public List<Profile> findAll();
+	public Profile createNewProfile(Profile newProfile);
 }

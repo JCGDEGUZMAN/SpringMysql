@@ -21,4 +21,12 @@ public class ProfileService implements IProfileService {
 		return profile;
 	}
 
+	@Override
+	public Profile createNewProfile(Profile newProfile) {
+		
+		Profile Profile = repository.save(newProfile);
+		
+		return Profile;
+	}
+
 }

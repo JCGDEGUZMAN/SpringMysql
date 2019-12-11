@@ -1,5 +1,6 @@
 package com.spring.crud.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,9 +13,14 @@ public class Profile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-
+	
+	@Column(name="pfname")
 	private String pfname;
+	
+	@Column(name="pmname")
 	private String pmname;
+	
+	@Column(name="plname")
 	private String plname;
 	
 	public long getId() {	

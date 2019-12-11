@@ -21,4 +21,12 @@ public class ProfileController {
 		return profiles;
 	}
 	
+	@RequestMapping("new-profile")
+	public long createNewProfile(Profile newProfile)
+	{
+		Profile profile = profileService.createNewProfile(newProfile);
+		
+		return profile.getId();
+	}
+	
 }

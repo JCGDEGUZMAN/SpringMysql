@@ -7,4 +7,5 @@ import com.spring.crud.models.Profile;
 @Repository
 public interface ProfileRepository extends JpaRepository<Profile, Integer> {
 
+	Profile findById(long id);
 }

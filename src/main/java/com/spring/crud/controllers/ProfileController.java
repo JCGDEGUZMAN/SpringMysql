@@ -7,6 +7,8 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.spring.crud.models.Profile;
@@ -18,7 +20,7 @@ public class ProfileController {
 	@Autowired
 	IProfileService profileService;
 	
-	@RequestMapping("profiles")
+	@RequestMapping("/profiles")
 	public List<Profile> findProfiles()
 	{
 		List<Profile> profiles = profileService.showProfiles();
@@ -26,15 +28,15 @@ public class ProfileController {
 		return profiles;
 	}
 	
-	@RequestMapping("new-profile")
-	public long createNewProfile(Profile newProfile)
+	@PostMapping(path="/new-profile",consumes= {"application/json"})
+	public long createNewProfile(@RequestBody Profile newProfile)
 	{
 		Profile profile = profileService.createNewProfile(newProfile);
 		
 		return profile.getId();
 	}
 	
-	@RequestMapping("profile/{id}")
+	@RequestMapping("/profile/{id}")
 	public Profile showProfile(@PathVariable("id") long id)
 	{
 		Profile profile = profileService.showProfile(id);

@@ -25,11 +25,11 @@ public class ProfileService implements IProfileService {
 	}
 
 	@Override
-	public Profile createNewProfile(Profile newProfile) {
+	public long createNewProfile(Profile newProfile) {
 		
 		Profile Profile = repository.save(newProfile);
 		
-		return Profile;
+		return Profile.getId();
 	}
 
 	@Override
@@ -50,6 +50,20 @@ public class ProfileService implements IProfileService {
 		repository.delete(profile);
 		
 		return profileId;
+	}
+
+	@Override
+	public long updateProfile(Profile existingProfile) {
+		
+		long profileIdExist = existingProfile.getId();
+		
+		Profile profile = repository.findById(profileIdExist);
+		
+		if(profile.getId() > 0) {
+			repository.save(existingProfile);
+		}
+
+		return profileIdExist;
 	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,9 +34,9 @@ public class ProfileController {
 	@PostMapping(path="/new-profile",consumes= {"application/json"})
 	public long createNewProfile(@RequestBody Profile newProfile)
 	{
-		Profile profile = profileService.createNewProfile(newProfile);
+		long profileId = profileService.createNewProfile(newProfile);
 		
-		return profile.getId();
+		return profileId;
 	}
 	
 	@GetMapping("/profile/{id}")
@@ -46,11 +47,19 @@ public class ProfileController {
 		return profile;
 	}
 	
+	@PutMapping(path="/update-profile", consumes= {"application/json"})
+	public long updateProfile(@RequestBody Profile profile)
+	{
+		long profileId = profileService.updateProfile(profile);
+		
+		return profileId;
+	}
+	
 	@DeleteMapping(path="/delete-profile/{id}")
 	public long deleteProfile(@PathVariable("id") long id)
 	{
-		long result = profileService.deleteProfile(id);
+		long profileId = profileService.deleteProfile(id);
 				
-		return result;
+		return profileId;
 	}
 }

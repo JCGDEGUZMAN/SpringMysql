@@ -9,7 +9,12 @@ import com.spring.crud.models.Profile;
 public interface IProfileService {
 
 	public List<Profile> showProfiles();
-	public Profile createNewProfile(Profile newProfile);
+	
+	public long createNewProfile(Profile newProfile);
+	
 	public Profile showProfile(long id);
+	
 	public long deleteProfile(long id);
+	
+	public long updateProfile(Profile existingProfile);
 }

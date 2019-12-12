@@ -40,4 +40,16 @@ public class ProfileService implements IProfileService {
 		return profile;
 	}
 
+	@Override
+	public long deleteProfile(long id) {
+		
+		Profile profile = repository.findById(id);
+		
+		long profileId = profile.getId();
+		
+		repository.delete(profile);
+		
+		return profileId;
+	}
+
 }

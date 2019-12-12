@@ -6,6 +6,8 @@ import java.util.Optional;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +22,7 @@ public class ProfileController {
 	@Autowired
 	IProfileService profileService;
 	
-	@RequestMapping("/profiles")
+	@GetMapping("/profiles")
 	public List<Profile> findProfiles()
 	{
 		List<Profile> profiles = profileService.showProfiles();
@@ -36,11 +38,19 @@ public class ProfileController {
 		return profile.getId();
 	}
 	
-	@RequestMapping("/profile/{id}")
+	@GetMapping("/profile/{id}")
 	public Profile showProfile(@PathVariable("id") long id)
 	{
 		Profile profile = profileService.showProfile(id);
 		
 		return profile;
+	}
+	
+	@DeleteMapping(path="/delete-profile/{id}")
+	public long deleteProfile(@PathVariable("id") long id)
+	{
+		long result = profileService.deleteProfile(id);
+				
+		return result;
 	}
 }

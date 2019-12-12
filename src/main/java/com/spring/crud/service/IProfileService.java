@@ -11,4 +11,5 @@ public interface IProfileService {
 	public List<Profile> showProfiles();
 	public Profile createNewProfile(Profile newProfile);
 	public Profile showProfile(long id);
+	public long deleteProfile(long id);
 }

@@ -11,7 +11,7 @@
 	<groupId>com.spring.crud</groupId>
 	<artifactId>spring-mysql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>SpringMysql</name>
 	<description>Mysql CRUD project for Spring Boot</description>
 
@@ -55,6 +55,11 @@
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
+		<dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+        
 		<dependency>
 		   <groupId>org.springframework.boot</groupId>
 		   <artifactId>spring-boot-starter-tomcat</artifactId>

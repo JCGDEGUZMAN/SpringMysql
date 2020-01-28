@@ -48,10 +48,10 @@ public class ProfileController {
 		return profile;
 	}
 	
-	@PutMapping(path="/update-profile", consumes= {"application/json"})
-	public long updateProfile(@RequestBody Profile profile)
+	@PutMapping(path="/update-profile/{id}", consumes= {"application/json"})
+	public long updateProfile(@RequestBody Profile profile, @PathVariable("id") long id)
 	{
-		long profileId = profileService.updateProfile(profile);
+		long profileId = profileService.updateProfile(profile, id);
 		
 		return profileId;
 	}

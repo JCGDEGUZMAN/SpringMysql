@@ -53,17 +53,20 @@ public class ProfileService implements IProfileService {
 	}
 
 	@Override
-	public long updateProfile(Profile existingProfile) {
+	public long updateProfile(Profile existingProfile, long id) {
 		
-		long profileIdExist = existingProfile.getId();
-		
-		Profile profile = repository.findById(profileIdExist);
-		
+		Profile profile = repository.findById(id);
+	
 		if(profile.getId() > 0) {
-			repository.save(existingProfile);
+			
+			profile.setPfname(existingProfile.getPfname());
+			profile.setPmname(existingProfile.getPmname());
+			profile.setPlname(existingProfile.getPlname());
+			
+			repository.save(profile);
 		}
 
-		return profileIdExist;
+		return id;
 	}
 
 }

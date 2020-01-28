@@ -16,5 +16,5 @@ public interface IProfileService {
 	
 	public long deleteProfile(long id);
 	
-	public long updateProfile(Profile existingProfile);
+	public long updateProfile(Profile existingProfile, long id);
 }
